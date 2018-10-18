@@ -5,7 +5,7 @@ Weatherapp uses Open Weather Map to keep you updated with the current weather in
 ### Note before starting to use!!!
 - You need to register in [openweathermap](http://openweathermap.org/) as a user and get your own API key. 
 
--Add your key to: backend > src > index.js > line 8 as your appId.
+- Add your key to: backend > src > index.js > line 8 as your appId.
 
 
 ### How to run the app with Node.js
