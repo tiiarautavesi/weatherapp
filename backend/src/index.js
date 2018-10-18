@@ -7,18 +7,36 @@ const cors = require('kcors');
 
 const appId = process.env.APPID || 'a1c24186fae30a5d1ab94d480e248970';
 const mapURI = process.env.MAP_ENDPOINT || "http://api.openweathermap.org/data/2.5";
-const targetCity = process.env.TARGET_CITY || "Helsinki,fi";
+
+let targetCity = {
+  currCity: 'Helsinki,fi'
+};
 
 const port = process.env.PORT || 9000;
+const portForLocationAPI = 8080;
 
+//previous API for weather data
 const app = new Koa();
 
+//new API for getting the location from frontend
+const getLocation = new Koa(); 
+
 app.use(cors());
+getLocation.use(cors());
+
+router.get('/api/location', ctx => {
+  ctx.type = 'application/json; charset=utf-8';
+  ctx.body = targetCity;
+});
+
+router.post('/api/location', async ctx => {
+  ctx.body = Object.assign(targetCity, ctx.request.body);
+  console.log(targetCity.currCity);
+});
 
 const fetchWeather = async () => {
-  const endpoint = `${mapURI}/weather?q=${targetCity}&appid=${appId}&`;
+  const endpoint = `${mapURI}/weather?q=${targetCity.currCity}&appid=${appId}&`;
   const response = await fetch(endpoint);
-
   return response ? response.json() : {}
 };
 
@@ -27,11 +45,20 @@ router.get('/api/weather', async ctx => {
 
   ctx.type = 'application/json; charset=utf-8';
   ctx.body = weatherData.weather ? weatherData.weather[0] : {};
+  console.log(weatherData);
 });
 
-app.use(router.routes());
-app.use(router.allowedMethods());
+app
+  .use(router.routes())
+  .use(router.allowedMethods());
+
+getLocation
+  .use(require('koa-body')()) 
+  .use(router.routes())
+  .use(router.allowedMethods());
 
 app.listen(port);
+getLocation.listen(portForLocationAPI);
 
 console.log(`App listening on port ${port}`);
+console.log(`LocationAPI listening on port ${portForLocationAPI}`);
