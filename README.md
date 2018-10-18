@@ -1,5 +1,5 @@
 # Weatherapp :sunny: :cloud: :snowflake: :sweat_drops:
-Weatherapp that uses Open Weather Map to keep you updated with the current weather in your location. 
+Weatherapp uses Open Weather Map to keep you updated with the current weather in your location. This application is based on Marko Klemetti's application. You can see all the modifications I've made from the commits of this repository.
 
 
 ### How to run the app with Node.js
