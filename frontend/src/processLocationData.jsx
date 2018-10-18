@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom';
 
 const baseURL = "//0.0.0.0:8080/api/location";
 
+/* This component searches, sends and writes out the user's location */
+
 const getLocationFromApi = async () => {
   try {
     const response = await fetch('//ip-api.com/json');
