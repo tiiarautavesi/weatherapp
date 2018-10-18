@@ -58,7 +58,7 @@ app
   .use(router.allowedMethods());
 
 getLocation
-  .use(require('koa-body')()) //Use koa-body
+  .use(require('koa-body')()) //Use koa-body to allow post requests from frontend
   .use(router.routes())
   .use(router.allowedMethods());
 
