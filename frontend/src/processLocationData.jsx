@@ -3,6 +3,8 @@ import React, {
 } from 'react';
 import ReactDOM from 'react-dom';
 
+const baseURL = "//0.0.0.0:8080/api/location";
+
 const getLocationFromApi = async () => {
   try {
     const response = await fetch('//ip-api.com/json');
@@ -24,23 +26,28 @@ class ProcessLocationData extends Component {
     };
   }
   
-  
   async componentWillMount() {
 
     const currLocation = await getLocationFromApi();
     const currCity = currLocation.city;
-    const currCountry = currLocation.countryCode.toLowerCase();
-    console.log(currCity + ',' + currCountry);
+    const currCityandCountry = currCity + ',' + currLocation.countryCode.toLowerCase();
+    
+    let locationToBackend = {
+      currCity: currCityandCountry,
+    };
+    
+    console.log(locationToBackend);
+    
     this.setState({location: currCity});
-    /*
+  
     fetch(baseURL, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(currLocation),
-    })*/
+      body: JSON.stringify(locationToBackend),
+    })
   }
 
   render() {
@@ -49,7 +56,7 @@ class ProcessLocationData extends Component {
     
     return (     
         <div className="title">
-          <h1>Weather in {String(location)}</h1>
+          <h1>Weather in {String(location)}*</h1>
         </div>
     );
   }
