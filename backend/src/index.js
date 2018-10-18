@@ -5,30 +5,35 @@ const router = require('koa-router')();
 const fetch = require('node-fetch');
 const cors = require('kcors');
 
-const appId = process.env.APPID || '';
+const appId = process.env.APPID || ''; // Add your API key here
 const mapURI = process.env.MAP_ENDPOINT || "http://api.openweathermap.org/data/2.5";
 
 let targetCity = {
   currCity: 'Helsinki,fi'
 };
 
+//Port for weather API
 const port = process.env.PORT || 9000;
+
+//Port for location API
 const portForLocationAPI = 8080;
 
-//previous API for weather data
+//API for weather data
 const app = new Koa();
 
-//new API for getting the location from frontend
+//API for getting the location from frontend
 const getLocation = new Koa(); 
 
 app.use(cors());
 getLocation.use(cors());
 
+//Create API content
 router.get('/api/location', ctx => {
   ctx.type = 'application/json; charset=utf-8';
   ctx.body = targetCity;
 });
 
+//Allow frontend to send data to API
 router.post('/api/location', async ctx => {
   ctx.body = Object.assign(targetCity, ctx.request.body);
   console.log(targetCity.currCity);
@@ -53,7 +58,7 @@ app
   .use(router.allowedMethods());
 
 getLocation
-  .use(require('koa-body')()) 
+  .use(require('koa-body')()) //Use koa-body
   .use(router.routes())
   .use(router.allowedMethods());
 
