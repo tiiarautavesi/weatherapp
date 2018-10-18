@@ -21,21 +21,27 @@ class Weather extends React.Component {
 
     this.state = {
       icon: "",
+      description: ""
     };
   }
 
   async componentWillMount() {
     const weather = await getWeatherFromApi();
     this.setState({icon: weather.icon.slice(0, -1)});
+    this.setState({description: weather.description})
   }
 
   render() {
     const { icon } = this.state;
+    const { description } = this.state;
     
     return (
       <div className="icon">
         <ProcessLocationData />
         { icon && <img src={`/img/${icon}.svg`} /> }
+        <p>{ description }</p>
+        <p className="info">* This app's functionality is based on geolocation. If your geolocation is off or shows an other location that isn't your actual location it won't work as desired.</p>
+        <footer>Author: Marko Klemetti, Further Development: Tiia Rautavesi</footer>
       </div>
     );
   }
