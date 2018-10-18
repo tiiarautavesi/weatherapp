@@ -9,14 +9,43 @@ body{
   justify-content: center;
   align-items: center;
   font-family: 'Roboto Slab', serif;
+  background-color: #ddfcff;
+  background-image: 
+  radial-gradient(circle at 100% 150%, #ddfcff 24%, white 25%, white 28%, #ddfcff 29%, #ddfcff 36%, white 36%, white 40%, transparent 40%, transparent),
+  radial-gradient(circle at 0    150%, #ddfcff 24%, white 25%, white 28%, #ddfcff 29%, #ddfcff 36%, white 36%, white 40%, transparent 40%, transparent),
+  radial-gradient(circle at 50%  100%, white 10%, #ddfcff 11%, #ddfcff 23%, white 24%, white 30%, #ddfcff 31%, #ddfcff 43%, white 44%, white 50%, #ddfcff 51%, #ddfcff 63%, white 64%, white 71%, transparent 71%, transparent),
+  radial-gradient(circle at 100% 50%, white 5%, #ddfcff 6%, #ddfcff 15%, white 16%, white 20%, #ddfcff 21%, #ddfcff 30%, white 31%, white 35%, #ddfcff 36%, #ddfcff 45%, white 46%, white 49%, transparent 50%, transparent),
+  radial-gradient(circle at 0    50%, white 5%, #ddfcff 6%, #ddfcff 15%, white 16%, white 20%, #ddfcff 21%, #ddfcff 30%, white 31%, white 35%, #ddfcff 36%, #ddfcff 45%, white 46%, white 49%, transparent 50%, transparent);
+  background-size:10vw 5vw;
 }
 
 h1 {
-  margin: 5vw;
+  text-align: center;
+  font-size: 4vw;
+  margin: 0;
 }
 
 .icon {
-  padding-top: 2vw;
-  height: 30vw;
-  min-width: 30vw;
+  max-width: 40vw;
+}
+
+p {
+  max-width: 50vw;
+  font-size: 2.3vw;
+  margin-top: 2vw;
+  text-align: center;
+}
+
+.info {
+  font-size: 1.3vw;
+}
+
+footer {
+  position: absolute;
+  bottom: 2vw;
+  left: 30vw;
+  width: 40vw;
+  text-align: center;
+  font-size: 1vw;
+  opacity: 0.5;
 }
