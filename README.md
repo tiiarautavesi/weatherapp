@@ -5,13 +5,13 @@ Weatherapp that uses Open Weather Map to keep you updated with the current weath
 ### How to run the app with Node.js
 - You need to have Node installed to your computer
 
-- Install node modules separately to frontend and backend directories with "npm i" and run both with "npm start"
+- Install node modules separately to frontend and backend directories with **npm i** and run both with **npm start**
 
 
 ### How to run the app with Docker (easier and nicer)
 - You need to have Node, Docker and Docker compose installed to your computer
 
-- Run "docker-compose build" in the master directory, then run "docker-compose up" and it will be up and running.
+- Run **docker-compose build** in the master directory, then run **docker-compose up** and it will be up and running.
 
 
 ## Changes to original app
