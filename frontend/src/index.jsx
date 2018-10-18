@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ProcessLocationData from './processLocationData.jsx'
 
 const baseURL = process.env.ENDPOINT;
 
@@ -30,9 +31,10 @@ class Weather extends React.Component {
 
   render() {
     const { icon } = this.state;
-
+    
     return (
       <div className="icon">
+        <ProcessLocationData />
         { icon && <img src={`/img/${icon}.svg`} /> }
       </div>
     );
