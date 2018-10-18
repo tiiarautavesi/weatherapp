@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
 body{
   overflow: hidden;
   position: absolute;
@@ -6,9 +8,15 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+  margin: 5vw;
 }
 
 .icon {
-  width: 30vw;
+  padding-top: 2vw;
   height: 30vw;
+  min-width: 30vw;
 }
